@@ -2,7 +2,7 @@
 
 #include <algorithm>
 
-ParticleSystem::ParticleSystem() : particles_({})
+ParticleSystem::ParticleSystem(sf::Vector2f worldSize_meters) : particles_({}), worldSize_meters_(worldSize_meters)
 {
 }
 

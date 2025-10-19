@@ -10,7 +10,7 @@
 class ParticleSystem
 {
 public:
-    ParticleSystem();
+    ParticleSystem(sf::Vector2f worldSize_meters);
 
     void update(float dt, sf::Vector2f mousePosition_meters);
     void draw(sf::RenderWindow &window);
@@ -21,6 +21,7 @@ public:
 
 private:
     std::vector<Particle> particles_;
+    sf::Vector2f worldSize_meters_;
     float attractorStrength_ = Defaults::ATTRACTOR_STRENGTH;
     float minAttractorDistance_meters_ = Defaults::MIN_ATTRACTOR_DISTANCE_M;
 
