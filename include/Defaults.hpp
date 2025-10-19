@@ -10,4 +10,5 @@ namespace Defaults
     // System
     constexpr float ATTRACTOR_STRENGTH = 10.0f;
     constexpr float MIN_ATTRACTOR_DISTANCE_M = 1.0f;
+    constexpr float BOUNCINESS = 0.8f;
 }
