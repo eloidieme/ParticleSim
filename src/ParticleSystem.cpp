@@ -2,7 +2,7 @@
 
 #include <algorithm>
 
-ParticleSystem::ParticleSystem() : particles_({})
+ParticleSystem::ParticleSystem(sf::Vector2f worldSize_meters) : particles_({}), worldSize_meters_(worldSize_meters)
 {
 }
 
@@ -10,6 +10,7 @@ void ParticleSystem::update(float dt, sf::Vector2f mousePosition_meters)
 {
     applyForces(mousePosition_meters);
     integrate(dt);
+    constrainParticles();
     cleanDeadParticles();
 }
 
@@ -28,6 +29,40 @@ void ParticleSystem::applyForces(sf::Vector2f mousePosition_meters)
         sf::Vector2f forceDirection = forceVector / distance_meters;
         float forceMagnitude = attractorStrength_ / (distance_meters * distance_meters);
         p.applyForce(forceMagnitude * forceDirection);
+    }
+}
+
+void ParticleSystem::constrainParticles()
+{
+    for (auto &p : particles_)
+    {
+        sf::Vector2f position = p.position_meters();
+        sf::Vector2f velocity = p.velocity_meters_per_sec();
+        float radius = p.radius_meters();
+
+        // Left/Right wall
+        if (position.x < 0.f + radius || position.x > worldSize_meters_.x - radius)
+        {
+            if (position.x < 0.f + radius)
+                position.x = radius + 0.01f;
+            else
+                position.x = worldSize_meters_.x - radius - 0.01f;
+            p.setPosition_m(position);
+            velocity.x *= -Defaults::BOUNCINESS;
+            p.setVelocity_m(velocity);
+        }
+
+        // Top/Bottom wall
+        if (position.y < 0.f + radius || position.y > worldSize_meters_.y - radius)
+        {
+            if (position.y < 0.f + radius)
+                position.y = radius + 0.01f;
+            else
+                position.y = worldSize_meters_.y - radius - 0.01f;
+            p.setPosition_m(position);
+            velocity.y *= -Defaults::BOUNCINESS;
+            p.setVelocity_m(velocity);
+        }
     }
 }
 

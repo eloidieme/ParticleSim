@@ -11,7 +11,7 @@ int main()
     window.setFramerateLimit(144);
 
     sf::Clock clock;
-    ParticleSystem system;
+    ParticleSystem system(World::toMeters((sf::Vector2f)window.getSize()));
 
     while (window.isOpen())
     {
