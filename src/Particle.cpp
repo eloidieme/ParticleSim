@@ -10,6 +10,9 @@ Particle::Particle(sf::Vector2f position_m)
 {
     shape_.setFillColor(sf::Color::Red);
     shape_.setRadius(radius_meters_ * World::PIXELS_PER_METER);
+
+    const float radius_px = shape_.getRadius();
+    shape_.setOrigin({radius_px, radius_px});
 }
 
 void Particle::update(float dt)

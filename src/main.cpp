@@ -29,9 +29,14 @@ int main()
                 system.emit(mousePos_meters);
             }
 
-            if (event->is<sf::Event::KeyPressed>() && sf::Keyboard::isKeyPressed(sf::Keyboard::Scancode::Up))
+            if (sf::Keyboard::isKeyPressed(sf::Keyboard::Scancode::Up))
             {
                 system.setAttractorStrength(system.attractorStrength() + 1.0f);
+            }
+
+            if (sf::Keyboard::isKeyPressed(sf::Keyboard::Scancode::Down))
+            {
+                system.setAttractorStrength(system.attractorStrength() - 1.0f);
             }
         }
 

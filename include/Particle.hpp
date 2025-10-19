@@ -14,7 +14,7 @@ public:
     void update(float dt);
     void draw(sf::RenderWindow &window);
 
-    sf::Vector2f position_meters() { return position_meters_; }
+    sf::Vector2f position_meters() const { return position_meters_; }
     bool isDead() const { return lifetime_secs_ <= 0.f; }
 
 private:
