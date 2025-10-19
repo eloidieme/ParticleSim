@@ -10,6 +10,7 @@ void ParticleSystem::update(float dt, sf::Vector2f mousePosition_meters)
 {
     applyForces(mousePosition_meters);
     integrate(dt);
+    constrainParticles();
     cleanDeadParticles();
 }
 
@@ -29,6 +30,11 @@ void ParticleSystem::applyForces(sf::Vector2f mousePosition_meters)
         float forceMagnitude = attractorStrength_ / (distance_meters * distance_meters);
         p.applyForce(forceMagnitude * forceDirection);
     }
+}
+
+void ParticleSystem::constrainParticles()
+{
+    // TODO
 }
 
 void ParticleSystem::integrate(float dt)

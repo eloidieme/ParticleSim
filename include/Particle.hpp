@@ -15,7 +15,11 @@ public:
     void draw(sf::RenderWindow &window);
 
     sf::Vector2f position_meters() const { return position_meters_; }
+    sf::Vector2f velocity_meters_per_sec() const { return velocity_meters_per_sec_; }
     bool isDead() const { return lifetime_secs_ <= 0.f; }
+
+    void setPosition_m(sf::Vector2f position_m) { position_meters_ = position_m; }
+    void setVelocity_m(sf::Vector2f velocity_m) { velocity_meters_per_sec_ = velocity_m; }
 
 private:
     sf::Vector2f position_meters_;

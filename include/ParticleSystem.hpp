@@ -15,6 +15,7 @@ public:
     void update(float dt, sf::Vector2f mousePosition_meters);
     void draw(sf::RenderWindow &window);
     void emit(sf::Vector2f position_meters);
+    void constrainParticles();
 
     void setAttractorStrength(float strength) { attractorStrength_ = strength; }
     float attractorStrength() { return attractorStrength_; }
