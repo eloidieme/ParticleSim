@@ -8,7 +8,7 @@ Particle::Particle(sf::Vector2f position_m)
       forceAccumulator_(0.0f, 0.0f),
       shape_(0.0f)
 {
-    shape_.setFillColor(sf::Color::Red);
+    shape_.setFillColor(sf::Color::Blue);
     shape_.setRadius(radius_meters_ * World::PIXELS_PER_METER);
 
     const float radius_px = shape_.getRadius();

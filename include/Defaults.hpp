@@ -4,7 +4,7 @@ namespace Defaults
 {
     // Particle
     constexpr float PARTICLE_MASS_KG = 1.0f;
-    constexpr float PARTICLE_LIFETIME_S = 60.0f;
+    constexpr float PARTICLE_LIFETIME_S = 600.0f;
     constexpr float PARTICLE_RADIUS_M = 0.1f;
 
     // System
